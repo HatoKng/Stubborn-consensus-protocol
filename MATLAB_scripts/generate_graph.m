@@ -2,12 +2,13 @@ function A = generate_graph(N)
     % fully connected graph 
     A = ones(N) - eye(N); 
 
-    A= [1 0 0 1 1 1;
-        0 1 1 0 1 0;
-        0 1 1 0 0 1;
-        1 0 0 1 1 0;
-        1 1 0 1 1 0;
-        1 0 1 0 0 1];
+    % A= [0 0 0 1 1 1 1;
+    %     0 0 1 0 1 0 1;
+    %     0 1 0 0 0 1 1;
+    %     1 0 0 0 1 0 1;
+    %     1 1 0 1 0 0 1;
+    %     1 0 1 0 0 0 1;
+    %     1 1 1 1 1 1 0];
 
     % UNDIRECTED GRAPH
     % A = [0 1 1 0 0 0;
@@ -26,12 +27,12 @@ function A = generate_graph(N)
     %     0 0 0 1 1 0];
 
     % NON DIAGONALIZABLE BALANCED CONNECTED DIRECTED GRAPH
-    % A= [2 2 0 0 0 0;
-    %     0 2 2 0 0 0;
-    %     0 0 2 2 0 0;
-    %     0 0 0 2 2 0;
-    %     0 0 0 0 2 2;
-    %     2 0 0 0 0 2];
+    % A= [1 1 0 0 0 0;
+    %     0 1 1 0 0 0;
+    %     0 0 1 1 0 0;
+    %     0 0 0 1 1 0;
+    %     0 0 0 0 1 1;
+    %     1 0 0 0 0 1];
 
     % NON BALANCED CONNECTED DIRECTED GRAPH
     % A = [0 1 0 0 0 0;
@@ -40,6 +41,14 @@ function A = generate_graph(N)
     %  0 0 0 0 1 0;
     %  0 0 0 0 0 1;
     %  0 0 0 0 0 0];
+
+    % BALANCED ROOTED-OUT BRANCHING DIRECTED GRAPH
+    A= [0 1 0 1 0 0;
+        0 0 1 0 1 0;
+        0 0 0 1 0 1;
+        1 0 0 0 1 0;
+        0 1 0 0 0 1;
+        1 0 1 0 0 0];
 
 
 end

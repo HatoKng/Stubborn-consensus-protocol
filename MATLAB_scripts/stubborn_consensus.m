@@ -1,25 +1,34 @@
-function x_hist = stubborn_consensus(A, x0, T)
-    N = length(x0);
-    x_hist = zeros(N, T);
-    x_hist(:, 1) = x0;
-    y_hist = zeros(N, T);
-    y_hist(:, 1) = 1 ./ x0;
+function [x_hist,y_hist, tvec] = stubborn_consensus(A, x0, T)
+    N = length(x0);    
+    y0 = 1 ./ x0;
 
     D = diag(sum(A,2));
     L = D - A;
-    L = L / max(eig(D)); %Normalization
-
+ 
     % Check rank condition
     assert(rank(L) == N-1, 'rank(L) is not N-1') 
 
     % Check balanced condition
-    outdeg = sum(A,2);    % row sums
-    indeg  = sum(A,1)';   % column sums
+    outdeg = sum(A,2);    
+    indeg  = sum(A,1)';  
     assert(isequal(outdeg, indeg), 'Graph is not balanced');
 
-    for t = 1:T
-        y_hist(:, t+1) = y_hist(:, t) - L*y_hist(:, t); 
-        x_hist(:,t+1) = 1 ./ y_hist(:,t+1);
+
+    dt = 0.01;               
+    tvec = 0:dt:T;         
+    Nt   = numel(tvec);
+    
+    x_hist = zeros(N, Nt);
+    y_hist = zeros(N, Nt);
+    for k = 1:Nt
+        t = tvec(k);
+        y_hist(:,k) = expm(-L*t) * y0;  % continous-time form
+        x_hist(:,k) = 1 ./ y_hist(:,k);
     end
+
+    % Disp the connectivity eigenvalue
+    lambda = eig(L);        
+    lambda = sort(lambda);  
+    lambda2_stubborn = lambda(2)
 
 end
