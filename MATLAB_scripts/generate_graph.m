@@ -43,12 +43,12 @@ function A = generate_graph(N)
     %  0 0 0 0 0 0];
 
     % BALANCED ROOTED-OUT BRANCHING DIRECTED GRAPH
-    A= [0 1 0 1 0 0;
-        0 0 1 0 1 0;
-        0 0 0 1 0 1;
-        1 0 0 0 1 0;
-        0 1 0 0 0 1;
-        1 0 1 0 0 0];
+    % A= [0 1 0 1 0 0;
+    %     0 0 1 0 1 0;
+    %     0 0 0 1 0 1;
+    %     1 0 0 0 1 0;
+    %     0 1 0 0 0 1;
+    %     1 0 1 0 0 0];
 
 
 end
