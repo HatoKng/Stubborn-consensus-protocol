@@ -4,8 +4,8 @@ clear; clc; close all;
 N = 6;
 
 % Initial conditions 
-x0 = [1; 1.2; 0.9; 1.1; 1.3; 8];  
-v0 = [1; 1; 1; 1; 1; 1];         % if v0 is [] then the simple integrator case is 
+x0 = [1; 1.2; 0.9; 1.1; 1.3; 12];  
+v0 = [-1; -1; -1; -1; -1; -1];         % if v0 is [] then the simple integrator case is 
                             % enabled else is enabled the double integrator case
 converge_and_move = true;
 
@@ -20,7 +20,7 @@ disp(armonic_mean)
 
 
 A = generate_graph(N);
-T = 12;
+T = 10;
 
 % Simulate weighted consensus
 [z_weighted, t_weighted] = weighted_consensus(A, x0, v0, T, converge_and_move);
